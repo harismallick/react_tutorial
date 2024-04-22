@@ -2,9 +2,9 @@ import React from 'react'
 // Changed header to main.
 const Header = () => {
   return (
-    <main>
+    <header>
         <h2>Groceries List</h2>
-    </main>
+    </header>
   )
 }
 

@@ -24,6 +24,8 @@
 - In jsx, its 'className'.
 - Using JSX's templating engine, variables and arrays can be rendered on the DOM.
 - Objects ***cannot*** be passed to JSX inside curly braces. React will throw an error.
+- Objects must be mapped to serialisable data types before rendering the component.
+- See this [link](https://kinsta.com/knowledgebase/objects-are-not-valid-as-a-react-child/) for more info.
 - JSX comments need to be placed inside curly braces as well, and using C's multiline syntax.
 
 ```javascript
@@ -46,3 +48,37 @@
 - This issue is avoided by using div tags, or react fragments, ie, empty html tags.
 
 ### Lecture 4 - Applying CSS Styles
+
+- CSS files can be linked to jsx files, like linking html files. The components need to have a className declared.
+- CSS styling can also be added directly into the component tags using the style attribute.
+- Unlike HTML, where you simple write the style key:value pairs inside quotes, you declare the styling as an object
+    placed inside the curly braces in jsx.
+
+```javascript
+    return (
+        <header style={{
+            backgroundColor: 'mediumblue',
+            color: '#fff'
+        }}></header>
+    )
+
+```
+
+- You can also write the styling into an object variable and pass the variable name into elements style attribute.
+
+```javascript
+    const headerStyle = {
+        backgroundColor: 'mediumblue',
+        color: '#fff'
+    }
+    return (
+        <header style={ headerStyle }></header>
+    )
+
+```
+
+- If you have multiple style sheets for multiple component files, then the css file needs to be imported to its 
+    corresponding *.js file.
+
+### Lecture 5 - Click Events
+
