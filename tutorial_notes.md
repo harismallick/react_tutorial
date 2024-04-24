@@ -82,3 +82,35 @@
 
 ### Lecture 5 - Click Events
 
+- As shown by the two examples in Main.js, event triggers can be used to execute functions in the component.
+- These functions declared as arrow functions and assigned to a variable, so they can be called upon event trigger.
+- Functions can be passed to JSX in two ways: by reference and by declaring an arrow function to execute the onClick
+    function.
+
+
+### Lecture 6 - useState() hook
+
+- useState() is a react hook that is instantiated with a getter and a setter for a variable.
+- The setter is used to changed the value of the variable.
+- To use this hook, you need to write the following import statement and instantiate a tuple as follows:
+
+```javascript
+import { useState } from 'react';
+
+const [name, setName] = useState('Dave');
+
+```
+- A key concept to understand with state in react is that the state can ***only*** be updated once per event.
+- Trying to call the setter function in useState() multiple times in the same event trigger will not multiple setter
+    calls to be made.
+- Example:
+
+```javascript
+const [count, setCount] = useState(0);
+```
+
+### Lecture 7 - Rendering Lists in JSX
+
+- Need to use the map() function on lists to iterate through each item in the list and map the item to desired html
+    elements.
+- See List.js for an example of this.
