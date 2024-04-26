@@ -10,10 +10,27 @@ DOM dynamic and each component is assigned a 'state'. This state changes based o
 on the page. Data is stored in React as two things: state and props (see below for details). State is data owned by the 
 component itself. Props are data which come from the parent.
 
+Useful legacy documentation [here](https://legacy.reactjs.org/docs/introducing-jsx.html).
+Latest react documentation [here](https://react.dev/learn)
+
+#### 0. Declarative vs Imperative programming
+
+- One of the key concepts to understand to use React correctly and efficiently is the difference between these two programming paradigms.
+- Imperative programming is when you define the output you desire, along with the steps on how to achieve it.
+- With declarative programming, you define the output desired, without declaring how to achieve it.
+- Traditional example of declarative programming are the use of higher order functions like map(), filer() and reduce(). And the use of the ternary operator.
+- Javascript code for react needs to be written using the declarative paradigm.
+- You should not use loops and custom functions to change the state of component objects.
+- You should use the built-in abstractions to achieve the end goal.
+- This will ensure maximum optimisation with the JSX engine, and help avoid bugs.
+- For more information, go to these links:
+    1. [link-1](https://stackoverflow.com/questions/1784664/what-is-the-difference-between-declarative-and-imperative-paradigm-in-programmin)
+    2. [link-2]()
+
 #### 1. How do components work?
 
 - The components are written using JS or TS
-- React functions are written using PascalCase.
+- React components are written using PascalCase.
 - The functions can return HTML markup that is added, appended, or deleted from the DOM.
 - But to add these elements to the DOM, the createElement() function needs to be called for every component.
 - As this can result in repetitive code, React developer choose to return JSX instead from Reaction functions.
