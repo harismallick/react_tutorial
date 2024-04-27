@@ -218,3 +218,25 @@ npx json-server -p <port-number> -w <path-to-db-json>
 - Create a useState hook to manage the state of the error from fetch requests. Display these error messages on the DOM, where appropriate, to maximise interactivity with the user.
 - DB calls can occasionally take a lot of time. Beneficial to add some form of loading animation or message to let the user know.
 - The loading state is handled using a separate useState hook.
+
+### Lecture 14 - CRUD Operation on json-server
+- json-server works by letting you access a key's values by passing the key as an argument in the URL.
+- Unlike a relational database, you cannot delete all the contents of a key or update all the contents of a key in one db call.
+- Need to loop through numerous db calls, passing the id or each item to delete as the argument.
+- json-server has some broken features.
+
+### Lecture 15 - JSON API challenge
+
+- The task is to make calls to an [api](https://jsonplaceholder.typicode.com/) and present all the data on a single web page using react.
+- Will come back to this challege later, as I want to use Routers to create multipage application.
+- Lecturer covers Routers in the next lesson.
+
+### Lecture 16 - React Router
+
+- React is known for being able to build <abbr title="Single Page Applications">SPAs</abbr>.
+- You can also build multi-page applications with react, but not natively.
+- Need to install a dependency called ***react-router-dom***.
+- This will enable us to route between different 'html pages' within react.
+- MAJOR ISSUE: Tutorial uses react-router-dom v5, but the latest version is V6.
+- Components like ***Switch*** used in the tutorial are deprecated in V6.
+- Writing V5 code like the tutorial will result in errors. Click [here](https://reactrouter.com/en/main/start/overview) for documentation on latest version of react-router-dom.

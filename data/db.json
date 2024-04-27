@@ -2,7 +2,7 @@
   "items": [
     {
       "id": "0",
-      "checked": false,
+      "checked": true,
       "item": "Apples"
     },
     {
@@ -29,6 +29,11 @@
       "id": "9",
       "checked": false,
       "item": "chicken"
+    },
+    {
+      "id": "10",
+      "checked": true,
+      "item": "cous cous"
     }
   ]
 }
