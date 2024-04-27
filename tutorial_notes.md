@@ -231,7 +231,10 @@ npx json-server -p <port-number> -w <path-to-db-json>
 - Will come back to this challege later, as I want to use Routers to create multipage application.
 - Lecturer covers Routers in the next lesson.
 
-### Lecture 16 - React Router
+### Lectures 16 and 17 - React Router
+
+#### The lecturer is using react router version 5. The latest version as of 2024 is version 6, where significant changes have been made to components, and hooks!
+##### Read the latest documentation [here](https://reactrouter.com/en/main)
 
 - React is known for being able to build <abbr title="Single Page Applications">SPAs</abbr>.
 - You can also build multi-page applications with react, but not natively.
@@ -240,3 +243,18 @@ npx json-server -p <port-number> -w <path-to-db-json>
 - MAJOR ISSUE: Tutorial uses react-router-dom v5, but the latest version is V6.
 - Components like ***Switch*** used in the tutorial are deprecated in V6.
 - Writing V5 code like the tutorial will result in errors. Click [here](https://reactrouter.com/en/main/start/overview) for documentation on latest version of react-router-dom.
+- When making an API to GET an item with a paticuar id, the path needs to be written slightly differently for a Route component:
+
+```javascript
+    <Route path="/post/:id"/>
+    // The ':' indicates that its a variable being concatenated to the path url string
+    // This is similar to the following using vanilla js:
+    const url = `/post/${id}`;
+```
+- The colon is a 'param' placeholder. Any parameter that follows can be accessed using the useParams hook built into react-router-dom.
+- useHistory() gives you access to the history instance object for a session.
+- You can push endpoints to this history instance using the useHistory() hook.
+- This is a great way to redirect the user to other 'pages' in your react DOM once an action is completed on another page.
+- For the full documentation, click [here](https://v5.reactrouter.com/web/api/history).
+- ***But*** this is deprecated.
+- If on V6 of react-router-dom, the hook is now called useNavigate(). You no longer 'push' a change to the hook. You simply pass the redirect URL as an argument to the hook.

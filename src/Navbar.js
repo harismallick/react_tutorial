@@ -1,38 +1,29 @@
-import React from "react";
+import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({ search, setSearch }) => {
   return (
-    <nav className="navbar">
-        <a className="navbar-brand" href="/#">Navbar</a>
-        <button 
-            className="navbar-toggler" 
-            type="button" 
-            data-toggle="collapse" 
-            data-target="#navbarSupportedContent" 
-            aria-controls="navbarSupportedContent" 
-            aria-expanded="false" 
-            aria-label="Toggle navigation"
-        >
-            <span className="navbar-toggler-icon"></span>
-        </button>
+    <nav className="Nav">
+        <form className="searchForm" onSubmit={(e) => e.preventDefault()}>
+            <input 
+                type="text" 
+                id="searchbar"
+                placeholder="Search posts"
+                value={search}   
+                onChange={(e) => setSearch(e.target.value)}             
+            />
+        </form>
         <ul>
-            <li className="nav-item dropdown">
-                <a 
-                    className="nav-link dropdown-toggle" 
-                    href="/#" 
-                    id="navbarDropdown" 
-                    role="button" 
-                    data-toggle="dropdown" 
-                    aria-haspopup="true" 
-                    aria-expanded="false"
-                >
-                    Dropdown
-                </a>
-                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a className="dropdown-item" href="/#">Home</a>
-                    <a className="dropdown-item" href="/#">Json Challenge action</a>
-                    <a className="dropdown-item" href="/#">Something else here</a>
-                </div>
+            <li>
+                <Link to="/">Home</Link>
+            </li>
+            <li>
+                <Link to="/post">Post</Link>
+            </li>
+            <li>
+                <Link to="/about">About</Link>
+            </li>
+            <li>
+                <Link to="/grocery">Grocery</Link>
             </li>
         </ul>
     </nav>
