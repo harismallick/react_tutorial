@@ -258,3 +258,26 @@ npx json-server -p <port-number> -w <path-to-db-json>
 - For the full documentation, click [here](https://v5.reactrouter.com/web/api/history).
 - ***But*** this is deprecated.
 - If on V6 of react-router-dom, the hook is now called useNavigate(). You no longer 'push' a change to the hook. You simply pass the redirect URL as an argument to the hook.
+
+### Lecture 18 - CSS for 'root' element and the app discussed
+
+- The lecturer goes over some CSS variables, like flex-grow, display and how they impact the styling of the react application.
+- If you want a particular HTML element to have its own scroll bar to view overflowing elements outside of the viewport, then the CSS attribute is ***overflow-y***.
+- This will come in handy for future projects.
+
+
+### Lecture 19 - Axios API
+
+- This is an alternative to the fetch API.
+- It abstracts aways having to write the request body yourself.
+- It also handles errors, and the response is automatically converted to a json object, unlike fetch, where you have to invoke response.json() yourself.
+
+### Lecture 20 - Custom Hooks
+
+- Only call hooks at the top level.
+- Do not call hooks inside loops, conditions or nested functions.
+- Don't call hooks using regualar JS. ***Only*** call hooks from React function components or other custom hooks.
+- React nomenclature: hooks should always start with ***use*** followed by hook name in camelCase.
+- There is a [library](https://nikgraf.github.io/react-hooks/) of custom hooks made by other developers that you can browse and use.
+- Here's an npm [page](https://www.npmjs.com/package/react-use) for the same purpose.
+- If your custom hook uses creates an event listener, then you should also add a removeEventListener() function to free memory once the hook action is complete.

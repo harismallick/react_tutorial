@@ -1,4 +1,5 @@
-import React from 'react'
+import { FaLaptop, FaTabletAlt, FaMobileAlt } from "react-icons/fa"
+
 // Changed header to main.
 // const Header = (props) => {
 //   return (
@@ -10,10 +11,15 @@ import React from 'react'
 
 // The props object can be destructured for cleaner looking code:
 
-const Header = ({ title }) => {
+const Header = ({ title, width }) => {
   return (
-    <header>
-        <h2>{ title }</h2>
+    <header className='Header'>
+        <h1>{ title }</h1>
+        {
+          width < 768 ? <FaMobileAlt />
+            : width < 992 ? <FaTabletAlt />
+              : <FaLaptop />
+        }
     </header>
   )
 }
