@@ -303,3 +303,7 @@ Latest react documentation [here](https://react.dev/learn)
 - This is like declaring try-except clauses for your components, so the app doesn't catastrophically break.
 - Rather than using the throw() function, like your would in vanilla JS, you wrap your application around the
     ***\<ErrorBoundary\>*** componenet
+
+#### 18. Higher Order Components
+
+- Look into this.

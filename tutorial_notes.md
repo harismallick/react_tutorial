@@ -271,6 +271,7 @@ npx json-server -p <port-number> -w <path-to-db-json>
 - This is an alternative to the fetch API.
 - It abstracts aways having to write the request body yourself.
 - It also handles errors, and the response is automatically converted to a json object, unlike fetch, where you have to invoke response.json() yourself.
+- Axios is available for both frontend and backend, while fetch is only frontend. So, fetch wont work for your backend nodeJS code.
 
 ### Lecture 20 - Custom Hooks
 

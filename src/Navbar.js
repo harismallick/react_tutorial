@@ -1,7 +1,11 @@
 import { Link } from 'react-router-dom';
+import { useContext } from "react";
+import DataContext from "./context/DataContext";
 
-const Navbar = ({ search, setSearch }) => {
-  return (
+const Navbar = () => {
+    const { search, setSearch } = useContext(DataContext);
+    
+    return (
     <nav className="Nav">
         <form className="searchForm" onSubmit={(e) => e.preventDefault()}>
             <input 
@@ -27,7 +31,7 @@ const Navbar = ({ search, setSearch }) => {
             </li>
         </ul>
     </nav>
-  );
+    );
 };
 
 export default Navbar;

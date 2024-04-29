@@ -2,8 +2,7 @@
 import './App.css';
 import Header from './Header';
 import Footer from './Footer';
-import { useEffect, useState } from 'react';
-
+import Grocery from './Grocery';
 // imports for lecture 16 onwards:
 import Navbar from './Navbar';
 import Home from './Home';
@@ -11,12 +10,15 @@ import NewPost from './NewPost';
 import PostPage from './PostPage';
 import About from './About';
 import Missing from './Missing';
-import { Route, Routes, useNavigate } from 'react-router-dom';
-import Grocery from './Grocery';
 import EditPost from './EditPost';
+
+import { useEffect, useState } from 'react';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import api from './api/posts';
 import useWindowSize from './hooks/useWindowSize';
+import useAxiosFetch from './hooks/useAxiosFetch';
+import { DataProvider } from './context/DataContext';
 
 function App() {
   // State management for the blog posts:
@@ -36,6 +38,15 @@ function App() {
 
   // Import width from useWindowSize hook:
   const { width } = useWindowSize();
+
+  // Custom hook to make db calls:
+  const { data, fetchError, isLoading } = useAxiosFetch(
+    "http://localhost:3500/posts"
+  );
+  // Set posts to the data from the db:
+  useEffect(() => {
+    setPosts(data);
+  }, [data]);
 
   // useEffect to search through the posts array:
   useEffect(() => {
@@ -79,25 +90,27 @@ function App() {
   let history = useNavigate();
 
   // Fetch user's data from the db:
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await api.get("/posts");
-        // Axios API with automatically throw error if response not in 200 range.
-        setPosts(response.data);
-      } catch (err) {
-        if (err.response) {
-          // A response status not in the 200 range and not in the 400 range
-          console.log(err.response.data);
-          console.log(err.response.status);
-          console.log(err.response.headers);
-        } else {
-          console.log(`Error: ${err.message}`);
-        }
-      }
-    };
-    fetchPosts();
-  }, []);
+  // This made redundant in chapter 20. Custom hook used instead.
+
+  // useEffect(() => {
+  //   const fetchPosts = async () => {
+  //     try {
+  //       const response = await api.get("/posts");
+  //       // Axios API with automatically throw error if response not in 200 range.
+  //       setPosts(response.data);
+  //     } catch (err) {
+  //       if (err.response) {
+  //         // A response status not in the 200 range and not in the 400 range
+  //         console.log(err.response.data);
+  //         console.log(err.response.status);
+  //         console.log(err.response.headers);
+  //       } else {
+  //         console.log(`Error: ${err.message}`);
+  //       }
+  //     }
+  //   };
+  //   fetchPosts();
+  // }, []);
 
   // Delete a post:
   const handleDelete = async (id) => {
@@ -136,44 +149,46 @@ function App() {
   }
   return (
     <div className="App">
-      <Header title="Groceries" width={width} />
-      <Navbar search={search} setSearch={setSearch} />
-      <Routes>
-        <Route path="/grocery" element={<Grocery />} />
-        
-        <Route path="/" element={<Home posts={searchResults} />} />
+      <DataProvider>
+        <Header title="Groceries" />
+        <Navbar />
+        <Routes>
+          <Route path="/grocery" element={<Grocery />} />
           
-        <Route path="/post" element={<NewPost 
-            handleSubmit={handleSubmit}
-            postTitle={postTitle}
-            setPostTitle={setPostTitle}
-            postBody={postBody}
-            setPostBody={setPostBody}
-          />} 
-        />
-        <Route path="/edit/:id" element={<EditPost 
-            handleEdit={handleEdit}
-            editTitle={editTitle}
-            setEditTitle={setEditTitle}
-            editBody={editBody}
-            setEditBody={setEditBody}
-            posts={posts}
-          />} 
-        />
+          <Route path="/" element={<Home />} />
+            
+          <Route path="/post" element={<NewPost 
+              handleSubmit={handleSubmit}
+              postTitle={postTitle}
+              setPostTitle={setPostTitle}
+              postBody={postBody}
+              setPostBody={setPostBody}
+            />} 
+          />
+          <Route path="/edit/:id" element={<EditPost 
+              handleEdit={handleEdit}
+              editTitle={editTitle}
+              setEditTitle={setEditTitle}
+              editBody={editBody}
+              setEditBody={setEditBody}
+              posts={posts}
+            />} 
+          />
 
-        <Route path="/post/:id" element={<PostPage 
-            posts={posts}
-            handleDelete={handleDelete}
-          />} 
-        />
-          
-        <Route path='/about' element={<About />} />
+          <Route path="/post/:id" element={<PostPage 
+              posts={posts}
+              handleDelete={handleDelete}
+            />} 
+          />
+            
+          <Route path='/about' element={<About />} />
 
-        <Route path='*' element={<Missing />} />
-      </Routes>
-      <Footer 
-        // length={items.length}
-      />
+          <Route path='*' element={<Missing />} />
+        </Routes>
+        <Footer 
+          // length={items.length}
+        />
+      </DataProvider>
     </div>
   );
 }
