@@ -282,3 +282,38 @@ npx json-server -p <port-number> -w <path-to-db-json>
 - There is a [library](https://nikgraf.github.io/react-hooks/) of custom hooks made by other developers that you can browse and use.
 - Here's an npm [page](https://www.npmjs.com/package/react-use) for the same purpose.
 - If your custom hook uses creates an event listener, then you should also add a removeEventListener() function to free memory once the hook action is complete.
+
+### Lecture 21 - useContext Hook
+
+- This is an alternative to prop drilling.
+- Rather than passing down the necessary attributes down the entire DOM tree from a parent element to the leaf nodes, the useContext hook can be used to pass in attributes directly to the component that needs them for its functionality.
+- To do this, you need the createContext() function to create global variables that will be passed to other components.
+- The variables are passed to the necesssary conponents by initialising a useContext(&lt;fileWithCreateContextFunction&gt;) function inside the desired component.
+- See [DataContext.js](./src/context/DataContext.js) for syntax on how to declare createContext.
+- You should think about the context of the different component attributes. Which ones are only used in one component? Which ones need to be accessed by multiple components?
+- These questions should determine if you declare useState() and useEffect() hooks directly in the component, or within a context manager.
+- Based on this, the code was refactored.
+
+### Lecture 22 - Redux with Easy-Peasy library
+
+- Redux is another library that can be added on top of React for state management.
+- As the application becomes more complex, then using Redux might help save writing multiple extra lines of code of createContext() and useContext() to manually manage the state of all the components in your application.
+- Easy Peasy documentation [here](https://easy-peasy.vercel.app/).
+- In this lesson, we're taking away state management from useContext, and giving it to ***action*** functions inside the redux 'store'.
+- The application in [index.js](./src/index.js) needs to be wrapped inside the StoreProvider component, imported from easy-peasy.
+- Then we remove the DataContext import from App.js.
+- Cannot use hooks inside the redux store.
+
+### Lecture 23 - Deploying React Applications
+
+- Can deploy on [Netlify](https://www.netlify.com/?utm_medium=paid_search&utm_source=google&utm_campaign=GS_Connect:+Netlify+Brand&utm_term=netlify) or [GitHub pages](https://pages.github.com/)
+- To use GitHub Pages, need to add [gh-pages](https://www.npmjs.com/package/gh-pages) to your project's developer dependencies.
+- Add the following key:value pairs to your ***package.json***:
+```json
+    "homepage": "https://<github-username>.github.io/<repository>"
+    /* Under "scripts" add the following: */
+    "scripts": {
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build"
+    }
+```

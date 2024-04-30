@@ -7,18 +7,6 @@
       "body": "Hello again world. Adding some more text to my blog post."
     },
     {
-      "id": "3",
-      "title": "Third Post",
-      "datetime": "July 02, 2023 11:19:36 AM",
-      "body": "This is my third post. Lets add a few more characters to this to make it longer."
-    },
-    {
-      "id": "31",
-      "title": "Test post number 4",
-      "datetime": "April 29, 2024 1:32:06 AM",
-      "body": "Here is some text for the post..."
-    },
-    {
       "id": "311",
       "title": "Why so many ids?",
       "datetime": "April 29, 2024 1:39:46 AM",
@@ -33,8 +21,32 @@
     {
       "id": "313",
       "title": "Another One",
-      "datetime": "April 29, 2024 8:01:01 PM",
-      "body": "DJ Khaled"
+      "datetime": "April 30, 2024 4:05:37 PM",
+      "body": "DJ Khaled - smart loyal"
+    },
+    {
+      "id": "314",
+      "title": "Another another one..",
+      "datetime": "April 30, 2024 3:52:49 PM",
+      "body": "test text. I've added to it."
+    },
+    {
+      "id": "316",
+      "title": "Refactored",
+      "datetime": "April 30, 2024 7:18:52 PM",
+      "body": "Redux refactor times 2."
+    },
+    {
+      "id": "317",
+      "title": "Hello final version",
+      "datetime": "April 30, 2024 7:19:29 PM",
+      "body": "This is the final version of the app."
+    },
+    {
+      "id": "318",
+      "title": "8th Post",
+      "datetime": "April 30, 2024 7:34:05 PM",
+      "body": "here's some text."
     }
   ]
 }
